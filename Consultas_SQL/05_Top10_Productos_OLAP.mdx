@@ -1,0 +1,13 @@
+SELECT
+    {
+        [Measures].[Sales Amount],
+        [Measures].[Order Quantity]
+    } ON COLUMNS,
+
+    TOPCOUNT(
+        [Dim Product].[English Product Name].[English Product Name].MEMBERS,
+        10,
+        [Measures].[Sales Amount]
+    ) ON ROWS
+
+FROM [Cubo_Ventas_OLAP];
